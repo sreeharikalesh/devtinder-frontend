@@ -3,6 +3,7 @@ import Body from "./Body";
 import Login from "./Login";
 import Profile from "./Profile";
 import Feed from "./Feed";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   return (
@@ -11,8 +12,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Body></Body>}>
             <Route path="/login" element={<Login></Login>}></Route>
-            <Route path="/profile" element={<Profile></Profile>}></Route>
-            <Route path="/feed" element={<Feed></Feed>}></Route>
+            <Route element={<ProtectedRoute></ProtectedRoute>}>
+              <Route path="/profile" element={<Profile></Profile>}></Route>
+              <Route path="/feed" element={<Feed></Feed>}></Route>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
